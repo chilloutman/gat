@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'Main'
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	compile 'org.apache.tomcat.embed:tomcat-embed-core:8.5.28'
+	compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.28'
+}
+
+distributions {
+	main {
+		contents {
+			from('src/main/webapp') {
+				// For this POC just use the same path as in the dev environment.
+				into 'src/main/webapp'
+			}
+		}
+	}
+}
